@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- Comment next line to disable stdout logging -->
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+	<springProperty scope="context" name="springAppName" source="spring.application.name"/>
+
+    <springProfile name="monitoring">
+	    <appender name="GELF" class="biz.paluch.logging.gelf.logback.GelfLogbackAppender">
+        	<host>udp:${GELF_HOST:-localhost}</host>
+        	<port>${GELF_PORT:-12201}</port>
+	        <version>1.1</version>
+	        <extractStackTrace>true</extractStackTrace>
+	        <filterStackTrace>false</filterStackTrace>
+	        <mdcProfiling>false</mdcProfiling>
+	        <includeFullMdc>true</includeFullMdc>
+	        <timestampPattern>yyyy-MM-dd HH:mm:ss,SSS</timestampPattern>
+	        <maximumMessageSize>8192</maximumMessageSize>
+			<additionalFields>logFormat=gelf,application=${springAppName},topic=${GELF_TOPIC:-gelf_default},bizDomain=${BIZ_DOMAIN:-domain},environment=${ENV_NAME:-env}</additionalFields>
+			<additionalFieldTypes>logFormat=String,application=String,topic=String,bizDomain=String,environment=String</additionalFieldTypes>	        
+			<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+	            <level>DEBUG</level>
+	        </filter>
+	    </appender>
+	    
+	    
+    </springProfile>
+
+    <root level="INFO">
+		<springProfile name="monitoring">
+			<appender-ref ref="GELF" />
+		</springProfile>
+    </root>
+
+</configuration>

@@ -1,0 +1,57 @@
+info:
+  name: ${name}
+  version: ${version}
+  description: ${description}
+
+spring:
+  application:
+    name: cashiers
+  datasource:
+    driver-class-name: org.postgresql.Driver    
+    url: jdbc:postgresql://172.24.1.35:5432/smartpos
+    username: exe_smartpos
+    password: bU1wG3AflaOn9ko3rY5T
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    open-in-view: true
+    show-sql: true
+    properties:
+      hibernate:
+        default_schema: cashier
+        temp:
+          use_jdbc_metadata_defaults: false
+kafka:
+  missingTopicsFatal: false
+  headerEvent: H-EVENT
+  ack: all
+  enableAutoCommit: false
+  specificAvroReader: true
+  schemaRegistryUrl: https://ld6mk03.es.wcorp.carrefour.com:8085
+  bootstrapServers: ld6mk01.es.wcorp.carrefour.com:9091,ld6mk02.es.wcorp.carrefour.com:9091,ld6mk03.es.wcorp.carrefour.com:9091
+  cashiers:
+    cashier:
+      topic: smartpos_bmc_mp_cashier_dev
+      group: cp-json-cashier-group
+      requestPerConnection: 1
+      retries: 3
+      retryTime: 60000
+      workers: 1
+      isEnabled: true               
+logging:
+  level:
+    com:
+      carrefour:
+        atlas: DEBUG
+    org:
+      springframework:
+        web: ERROR      
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+cp:
+   communication:
+    storesUrl: https://smartpos-dev-stores.npapps.gke.es.wcorp.carrefour.com/stores
+
