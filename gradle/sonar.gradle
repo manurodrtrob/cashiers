@@ -1,0 +1,17 @@
+sonarqube {
+    properties {
+        property "sonar.host.url", "${sonarUrl}"
+        property "sonar.projectKey", (project.hasProperty('localFull')) ? "cashiers sonarDebug" : "cashiers"
+        property "sonar.projectName", (project.hasProperty('localFull')) ? "cashiers DebugSonar" : "cashiers"
+        property "sonar.projectDescription", "cashiers: test smartpos"
+        property "sonar.analysis.mode", (project.hasProperty('local')) ? "preview" : "publish"
+        property "sonar.login", "${sonarUsername}"
+        property "sonar.password", "${sonarPassword}"
+        property "sonar.sources", "src/main/java"
+        property "sonar.cpd.java.minimumLines", "5"
+        property "sonar.issue.ignore.multicriteria", "e1"
+        property "sonar.issue.ignore.multicriteria.e1.ruleKey", "squid:S00100"
+        property "sonar.issue.ignore.multicriteria.e1.resourceKey",  "**/*DTO.java"
+
+    }
+}

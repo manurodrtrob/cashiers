@@ -1,0 +1,11 @@
+management:
+  metrics:
+    tags:
+      host: ${HOSTNAME:localhost}
+      env: ${STATSD_ENV:springboot_slocal}
+    export:
+      statsd:
+        enabled: true
+        flavor: datadog
+        host: ${STATSD_SERVER:localhost}
+        port: ${STATSD_PORT:8125}

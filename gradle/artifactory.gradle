@@ -1,0 +1,27 @@
+artifactoryPublish {
+    dependsOn assemble
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact("$buildDir/libs/${project.getName()}-${project.getVersion()}.jar")
+        }
+    }
+}
+
+artifactory {
+    contextUrl = "http://artifactory.es.wcorp.carrefour.com/artifactory"
+
+    publish {
+        repository {
+            repoKey = version.endsWith('SNAPSHOT') ? 'snapshot' : 'releases'
+            username = "$mavenUser"
+            password = "$mavenPassword"
+        }
+
+        defaults {
+            publications('mavenJava')
+        }
+    }
+}
