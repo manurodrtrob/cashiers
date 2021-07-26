@@ -1,0 +1,144 @@
+buildscript {
+	ext {
+		springBootVersion = '2.1.10.RELEASE'
+	}
+	repositories { maven { url "$RepositoryUrl" } }
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		//plugin needed to generate POJO from Avro schema
+    	//classpath "com.commercehub.gradle.plugin:gradle-avro-plugin:0.99.99"
+	}
+}
+
+plugins {
+    id "java"
+    id "groovy"
+    id "maven"
+    id "eclipse"
+    id "idea"
+    id "maven-publish"
+	id "io.spring.dependency-management" version "1.0.8.RELEASE"
+ 	id "org.springframework.boot" version "2.1.10.RELEASE"
+    id "org.sonarqube" version "2.7"
+    id "com.bmuschko.nexus" version "2.3.1"
+    id "com.jfrog.artifactory" version "4.7.3"
+}
+
+apply from: "gradle/sonar.gradle"
+apply from: "gradle/artifactory.gradle"
+
+apply plugin: 'eclipse'
+//apply plugin: "com.commercehub.gradle.plugin.avro"
+
+
+processResources {
+	filesMatching('application.yml') {
+		expand(project.properties)
+	}
+}
+
+group = 'com.carrefour'
+
+sourceCompatibility = '1.11'
+targetCompatibility = '1.11'
+
+repositories {
+	mavenCentral()
+    maven { url "$RepositoryUrl"  }
+   	flatDir { dirs 'libs' }
+}
+
+ext {
+	set('springCloudVersion', 'Greenwich.RELEASE')
+}
+
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-web-services'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+
+	//Spring Cloud
+	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix-dashboard'
+	implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+
+		//Swagger
+	implementation 'io.springfox:springfox-swagger2:2.9.2'
+	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+
+	//Logs & metrics
+	implementation 'biz.paluch.logging:logstash-gelf:1.13.0'
+	implementation 'io.micrometer:micrometer-core'
+	implementation 'io.micrometer:micrometer-registry-statsd'
+
+		// Bases de Datos
+	runtime 'org.postgresql:postgresql'
+  	testImplementation 'com.h2database:h2'
+
+	implementation 'org.apache.commons:commons-lang3:3.8.1'
+
+	    //KAFKA-SPRING
+	implementation 'org.springframework.kafka:spring-kafka'
+	implementation 'org.apache.kafka:kafka-clients:2.5.0'
+
+	compile ("io.confluent:kafka-schema-registry:5.0.0"){
+        	exclude module: "slf4j-log4j12"
+        	}
+        compile ("io.confluent:kafka-schema-registry-client:5.0.0"){
+        	exclude module: "slf4j-log4j12"
+        }
+
+        compile ("io.confluent:kafka-avro-serializer:5.0.0"){
+        	exclude module: "slf4j-log4j12"}
+		
+	implementation "org.apache.avro:avro:1.8.2"
+	
+	// Lombok
+	dependencies {
+		compileOnly 'org.projectlombok:lombok:1.18.10'
+		annotationProcessor 'org.projectlombok:lombok:1.18.10'
+	}
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+task integrationTest{
+    group 'Welcome'
+    description 'Task para test de integracion'
+
+    doLast {
+        println 'No se han definido test de integracion'
+    }
+}
+
+test {
+    maxHeapSize = "1024m"
+}
+
+//task generateAvro(type: com.commercehub.gradle.plugin.avro.GenerateAvroJavaTask) {
+    //point plugin to folder with avro schemas
+//    source("src/main/resources/avsc")
+    //point plugin to folder with generated POJOs
+//    outputDir = file("dest/avro")
+//}
+
+//avro {
+//    fieldVisibility = "PRIVATE"
+//}
+
+//task copyAvro(type: Copy) {
+//    dependsOn generateAvro
+//    from "dest/avro"
+//    into "src/main/java"
+//}
+//compileJava.dependsOn copyAvro
+
+//compileJava.source(generateAvro.outputs)

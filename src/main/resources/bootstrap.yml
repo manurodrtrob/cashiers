@@ -1,0 +1,19 @@
+# Default configuration
+spring:
+  application:
+    name: cashiers
+    moduleid: cashiers
+  profiles:
+    active: ${ENVIRONMENT:local}
+  
+---
+# Local
+spring:
+  profiles: local
+  cloud:
+    config:
+      enabled: false
+server:
+  port: 8082
+
+      

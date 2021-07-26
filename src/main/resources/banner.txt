@@ -1,0 +1,43 @@
+
+             ./+/-`
+            `NMMMNmho/-`
+             ymMMMMMMMNmho/-
+              .-+ydmMMMMMMMNs
+                  `.-+ydNMMMM/
+                       `:MMMMN.
+                         sMMMMh------------------------------------------------------.`
+                         `mMMMMNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNh`
+                          :NMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN`
+                           oMMMMN//////////////NMMMM//////////sMMMMm/////////////NMMMM+
+                           `dMMMM+             NMMMN          :MMMMd            +MMMMd
+                            -NMMMN-............NMMMN........../MMMMd...........-NMMMM-
+                             oMMMMMNNNNNNNNNNNNMMMMMNNNNNNNNNNMMMMMMNNNNNNNNNNNMMMMMs
+                              dMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMm`
+                              .NMMMMyooooooooooMMMMMooooooooooyMMMMmooooooooosMMMMM:
+                               +MMMMd          NMMMN          :MMMMd         sMMMMy
+                                hMMMMo         NMMMN          :MMMMd        -MMMMN.
+                                .NMMMMoooooooooMMMMMooooooooooyMMMMmoooooooomMMMM+
+                                 +MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMd
+                                  hMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-
+                                  .NMMMM/``````NMMMN``````````/MMMMd``````dMMMMo
+                                   /MMMMm`     NMMMN          :MMMMd     /MMMMm`
+                                    yMMMMy+++++NMMMM++++++++++sMMMMm+++++NMMMM:
+                                   :mMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMy
+                                  .NMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNh`
+                                  hMMMh.....................................`
+                                 +MMMm.
+                                -NMMM+``````````````````````````````````````
+                                dMMMMmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmd+
+                               `dNNMMMMMMMMMMMMNNNNNNNNNNNNNNMMMMMMMMMMMMNNNs
+                                `-/NMMMMNmNMMMN+------------:mMMMMNmNMMMMo-.
+                                  dMMMh:..-yMMMm`           yMMMd:..-oMMMN.
+                                 .MMMM.    `NMMM-           NMMM/     dMMM+
+                                  mMMMy-``.oMMMN`           yMMMh-``.+NMMM:
+                                  -mMMMNddNMMMm:            .hMMMMmdmMMMN+
+                                   `+dNNNNNNdo.              `/hmNNNNNms-
+                                      .-::-.                    `-:::.`
+
+
+ App name: ${spring.application.name}
+
+    				:: Spring Boot :: ${spring-boot.formatted-version}

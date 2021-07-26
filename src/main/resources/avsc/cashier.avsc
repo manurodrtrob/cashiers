@@ -1,0 +1,142 @@
+{
+  "type": "record",
+  "name": "cashier",
+  "namespace": "com.carrefour.smartpos",
+  "version": "1.1",
+  "doc": "Cashier date",
+  "fields": [
+    {
+      "name": "store_id",
+      "type": "string",
+      "doc": "Werks code"
+    },
+    {
+      "name": "update_date",
+      "type": "string",
+      "doc": "Format yyyymmdd"
+    },
+    {
+      "name": "action",
+      "type": [
+        "null",
+        "int"
+      ],
+      "doc": "Action (insert:1/delete:0)",
+      "default": null
+    },
+    {
+      "name": "cashier_id",
+      "type": "string",
+      "doc": "Cashier code"
+    },
+    {
+      "name": "cashier_name",
+      "type": "string",
+      "doc": "Name of cashier"
+    },
+    {
+      "name": "cashier_surname1",
+      "type": [
+        "null",
+        "string"
+      ],
+      "doc": "First surname of cashier",
+      "default": null
+    },
+    {
+      "name": "cashier_surname2",
+      "type": [
+        "null",
+        "string"
+      ],
+      "doc": "Second surname of cashier",
+      "default": null
+    },
+    {
+      "name": "cashier_document",
+      "type": [
+        "null",
+        "string"
+      ],
+      "doc": "Identification document of cashier",
+      "default": null
+    },
+    {
+      "name": "cashier_phone",
+      "type": [
+        "null",
+        "string"
+      ],
+      "doc": "Phone of cashier",
+      "default": null
+    },
+    {
+      "name": "training",
+      "type": [
+        "null",
+        "boolean"
+      ],
+      "doc": "Training authorization",
+      "default": null
+    },
+    {
+      "name": "pos_type",
+      "type": "string",
+      "doc": "Type of POS"
+    },
+    {
+      "name": "cashcount",
+      "type": [
+        "null",
+        "boolean"
+      ],
+      "doc": "Autoarqueo",
+      "default": null
+    },
+    {
+      "name": "inicash",
+      "type": [
+        "null",
+        "boolean"
+      ],
+      "doc": "Initial amount allowed",
+      "default": null
+    },
+    {
+      "name": "inicash_amount",
+      "type": [
+        "null",
+        "int"
+      ],
+      "doc": "Cash of initial amount",
+      "default": 0
+    },
+    {
+      "name": "level_authorization",
+      "type": [
+        "null",
+        "int"
+      ],
+      "doc": "Level authorization of cashier",
+      "default": null
+    },
+    {
+      "name": "badgecode",
+      "type": [
+        "null",
+        "string"
+      ],
+      "doc": "Badge code",
+      "default": null
+    },
+    {
+      "name": "pass_reset",
+      "type": [
+        "null",
+        "boolean"
+      ],
+      "doc": "Password reset",
+      "default": null
+    }
+  ]
+}
